@@ -1,8 +1,7 @@
 ---
 title: "ESS330_Lab2"
 output:
-  html_document:
-    output_dir: "docs"
+  html_document
 ---
 
 ```{r setup, include=FALSE}
