@@ -1,7 +1,8 @@
 ---
-title: "ESS330_Lab2"
-output:
-  html_document
+title: "ESS330_lab2"
+author: "Alan Cai"
+date: "2025-02-21"
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
