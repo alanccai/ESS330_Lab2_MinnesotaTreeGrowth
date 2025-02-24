@@ -45,16 +45,37 @@ trees %>%
   mutate(established = if_else(age > 5, TRUE, FALSE)) %>%
   count(established)
 ```
+#Q16
+```{r}
+trees <- mutate(trees,
+                DBH_class = case_when(
+                  DBH_cm < 2.5 ~ "seedling",
+                  DBH_cm >= 2.5 & DBH_cm < 10 ~ "sapling",
+                  DBH_cm >= 10 & DBH_cm < 30 ~ "pole",
+                  DBH_cm >= 30 ~ "sawlog")
+                )
+
+filter(trees, year == 2007) %>%
+  count(DBH_class)
+```
+
+
 
 #FINAL QUESTION
 ```{r}
 temp <- trees %>%
-  mutate(growth = DBH_cm - lag(DBH_cm)) %>%
-  mutate(total_years = n()) %>%
-  filter(total_years > 10) %>%
-  filter(!is.na(growth)) %>%
+  group_by(treeID) %>%
+  arrange(year) %>%
+  mutate(growth = DBH_cm - lag(DBH_cm), 
+  total_years = n()) %>%
+  filter(!is.na(growth), total_years > 10) %>%
+  ungroup() %>%
   group_by(species) %>%
   summarise(mean_growth = mean(growth))
+
+slice_max(temp, mean_growth, n = 3)
+slice_min(temp, mean_growth, n = 3)
+  
 ```
 
 
