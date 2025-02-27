@@ -2,7 +2,7 @@
 title: "ESS330_lab2"
 author: "Alan Cai"
 date: "2025-02-21"
-output: html_document
+format: html
 ---
 
 ```{r setup, include=FALSE}
@@ -78,5 +78,12 @@ slice_min(temp, mean_growth, n = 3)
   
 ```
 
+```{r}
+data("airquality")
+
+
+library(visdat)
+vis_dat(airquality)
+```
 
 

@@ -1,4 +1,7 @@
 project:
-  type: website
+  title: "csu-ess-lab2"
   output-dir: docs
   
+format:
+  html:
+    self-contained: true
